@@ -1,0 +1,88 @@
+<!--
+JQuery CSS tags demo'd:
+.addClass()
+.hasClass()
+.removeClass()
+.css()
+-->
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>JQuery CSS Tags Demo</title>
+        <style>
+            .pink{
+                color: pink;
+            }
+            .blue{
+                color: lightblue;
+            }
+            .greensq{
+                background-color: lightgreen;
+                width: 50px;
+                height: 50px;
+            }
+        </style>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                /* CSS Tags */
+
+                // ADDCLASS, HASCLASS, REMOVECLASS  //
+                $('#pink').click(function(){
+                    if($('h5').hasClass('blue')){
+                        $('h5').removeClass();
+                        $('h5').addClass('pink');  
+                    }else{
+                         $('h5').addClass('pink');  
+                    } 
+                });
+                $('#blue').click(function(){
+                    if($('h5').hasClass('pink')){
+                        $('h5').removeClass();
+                        $('h5').addClass('blue');  
+                    }
+                    else{
+                         $('h5').addClass('blue');  
+                    }
+                });
+                $('#black').click(function(){
+                    if($('h5').hasClass('pink')){
+                        $('h5').removeClass('pink');
+                    }
+                    else if($('h5').hasClass('blue')){
+                        $('h5').removeClass('blue');
+                    }
+                });
+
+                // CSS Getter .css(propertyName) //
+                $('#what').click(function(){
+                    var width = $('.greensq').css('width');
+                    var height = $('.greensq').css('height');
+                    $('#output').html("This square's height and width is: " + height + " by  " + width);
+                });
+
+                // CSS Setter .css(propertyName, value) //
+
+
+
+            });
+        </script>
+    </head>
+    <body>
+
+        <!--ADDCLASS AND REMOVECLASS-->
+        <button id="pink">Make me pink</button>
+        <button id="blue">Make me blue</button>
+        <button id="black">Make me black</button>
+        <h5>Happy Birthday</h5>
+
+        <!--CSS()-->
+        <button id="what">How big is this?</button>
+        <span id="output">&nbsp;</span>
+        <div class="greensq"></div>
+
+    </body>
+
+</html>
