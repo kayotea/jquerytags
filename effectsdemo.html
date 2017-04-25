@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>JQuery Effects Demo</title>
+        <style>
+            button {
+                background: lightpink;
+            }
+            div.sun{
+                background: gold;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+            }
+            div.block{
+                background: lightgreen;
+                width: 50px;
+                height: 50px;
+            }
+            div.tri{
+                width: 0px;
+                height: 0px;
+                border-bottom: 50px solid lightskyblue;
+                border-left: 25px solid transparent;
+                border-right: 25px solid transparent;
+            }
+        </style>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                /* Events */
+
+                // HIDE AND SHOW //
+                $('#hider').click(function(){           // .click() is a listener, runs when user clicks
+                    $('.secret').hide();                // .hide() hides an element
+                });
+                $('#shower').click(function(){          
+                    $('.secret').show();                // .show() shows an element
+                });
+                // 'slow', 'fast', 400, etc changes hiding speed
+                //  hide and show can have a function run right after they complete
+                $('#hider2').click(function(){              
+                    $('.supersecret').hide('slow', function(){              
+                        $('.supersecret').show('slow', $('.supersecret').text("...now you don't!"));   
+                    });                
+                });
+
+                // TOGGLE //
+                $('#toggle').click(function(){
+                    $('.toggle').toggle();              // .toggle() switches the content on/off
+                });
+                $('#toggle2').click(function(){         // .toggle() can be slow and have a function
+                    $('.toggle2').toggle('slow', function(){
+                        //toggle complete
+                    });
+                });
+
+                // SLIDE DOWN //
+                $('#slide').click(function(){
+                    if($('.block').is(':hidden')){
+                        $('.block').slideDown('fast', function(){
+                            //animation complete
+                        });
+                    }                                   
+                    else {
+                        $('.block').slideUp('fast');
+                    }
+                });
+
+                // SLIDE TOGGLE //
+                $('#slidetog').click(function(){
+                    $('.sun').slideToggle('slow');
+                });
+
+                // FADEOUT AND FADEIN //
+                $('#fadeout').click(function(){
+                    $('.tri').fadeOut(1000, 'linear', complete); // (speed, fade type, function)
+                    function complete(){
+                        //this function runs when animation complete
+                    }
+                });
+                $('#fadein').click(function(){
+                    $('.tri').fadeIn(1000, 'linear');
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <!--HIDE AND SHOW-->
+        <button id="hider">Hide Secret</button>
+        <button id="shower">Show Secret</button>
+            <p class="secret">It's a secret.</p>
+            <br>
+        <button id="hider2">Hide Secret</button>
+            <p class="supersecret">Now you see me...</p>
+        
+        <!--TOGGLE-->
+        <button id="toggle">Toggle Me</button>
+            <p class="toggle">Good Morning</p>
+            <p class="toggle" style="display: none">Good Night</p>
+        <button id="toggle2">Toggle Me</button>
+            <p class="toggle2">Good Morning</p>
+            <p class="toggle2" style="display: none">Good Night</p>
+
+        <!--SLIDE DOWN-->
+        <button id="slide">Slide down that block</button>
+            <div class="block"></div>
+            <br>
+
+        <!--SLIDE TOGGLE-->
+        <button id="slidetog">Here comes the sun</button>
+            <div class="sun"></div>
+            <br>
+
+        <!--FADEOUT AND FADEIN -->
+        <button id="fadeout">Fading away...</button>
+        <button id="fadein">...Coming back</button>
+            <div class="tri"></div>
+    </body>
+
+</html>
